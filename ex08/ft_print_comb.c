@@ -6,31 +6,31 @@
 /*   By: mac <sorungta@42bangkok.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 23:23:00 by mac               #+#    #+#             */
-/*   Updated: 2022/07/26 23:23:29 by mac              ###   ########.fr       */
+/*   Updated: 2022/07/27 01:26:51 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int		g_len;
-char	g_buf[10];
+int		g_lenght;
+char	g_array[10];
 
 void	rec(int prev, int n)
 {
 	int	i;
 
-	if (n == g_len)
+	if (n == g_lenght)
 	{
-		write(1, g_buf, g_len);
+		write(1, g_array, g_lenght);
 		write(1, ", ", 2);
 		return ;
 	}
 	if (prev == 9)
 		return ;
 	i = prev;
-	while (++i <= 10 - g_len + n)
+	while (++i <= 10 - g_lenght + n)
 	{
-		g_buf[n] = '0' + i;
+		g_array[n] = '0' + i;
 		rec(i, n + 1);
 	}
 }
@@ -51,10 +51,10 @@ void	ft_print_combn(int n)
 	int	i;
 
 	i = 0;
-	g_len = n;
+	g_lenght = n;
 	while (i < 10 - n)
 	{
-		g_buf[0] = '0' + i;
+		g_array[0] = '0' + i;
 		rec(i++, 1);
 	}
 	print_last(i);
